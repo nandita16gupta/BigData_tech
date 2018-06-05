@@ -13,3 +13,8 @@ Prefer version 2.5 because the latest ones take a lot of time to boot and Import
 https://hortonworks.com/downloads/
 
 
+## Dataset 1
+
+MovieLens 100K Dataset
+
+http://files.grouplens.org/datasets/movielens/ml-100k.zip
