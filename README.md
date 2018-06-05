@@ -5,7 +5,6 @@ Hands on Hadoop
  
 * This is an open source software platform developed by Yahoo for distributed stoage and processing of very large datasets on computer clusters.  
 * GFS + MapReduce with horizontal scaling (Adding more nodes)
-* 
 
 Building blocks
 
@@ -22,18 +21,22 @@ Building blocks
 
 ![alt text](https://github.com/snknitin/BigData_tech/blob/master/static/coresys.PNG)
 
-Mesos is an alternative to Yarn  
-Spark is at the same level of MapReduce and sits over yarn or mesos, to run queries on the data.It is extermerly fast.Spark scripts like MR require coding in either Python, Java or Scala(prefered). It can do ML, handle streaming data, handle SQL queries  
-Tez is used with hive to accelerate it and it used DAG. Similar to Spark  
-Hbase is a NoSQL db that exposes data on cluster to other systems  
-Apache Storm processing streaming data in real time  
-OOzie is a way of scheduling jobs on clusters run on a schedule  
-Zookeeper co-ordinates and keeps track of which nodes are up or down, which is master etc  
-Sqoop deals with data ingestion(getting data into the clusters and HDFS from external sources). It is a connector between hadoop and lecacy databases  
-Flume is a way of reliably transporting weblogs at a very large scale  
-Kafka can collect data of any sort from a cluster and broadcast it into hadoop  
+- Mesos is an alternative to Yarn  
+- Spark is at the same level of MapReduce and sits over yarn or mesos, to run queries on the data.It is extermerly fast.Spark scripts  like MR require coding in either Python, Java or Scala(prefered). It can do ML, handle streaming data, handle SQL queries 
+- Tez is used with hive to accelerate it and it used DAG. Similar to Spark  
+- Hbase is a NoSQL db that exposes data on cluster to other systems  
+- Apache Storm processing streaming data in real time  
+- OOzie is a way of scheduling jobs on clusters run on a schedule  
+- Zookeeper co-ordinates and keeps track of which nodes are up or down, which is master etc  
+- Sqoop deals with data ingestion(getting data into the clusters and HDFS from external sources). It is a connector between hadoop and lecacy databases  
+- Flume is a way of reliably transporting weblogs at a very large scale  
+- Kafka can collect data of any sort from a cluster and broadcast it into hadoop  
 
+## External Data Storage
 
+* MySQL
+* Cassandra
+* mongoDB
 
 
 
