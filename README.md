@@ -161,6 +161,8 @@ Instead of sql we can do things mroe programmatically too
 * Dataframe is a Dataset of row objects while Dataset is a general term that cn contaian any sort of info, not just rows
 * Spark 2.0 way is to use Dataset and we create a SparkSession object instead of SparkContext
 * SparkSession.builder.appName("some name").getOrCreate() 
+* Run "export SPARK_MAJOR_VERSION=2" in the cli
+
 
 
      
