@@ -119,7 +119,7 @@ To make RDD, the driver program is going to create a **SparkContext** (basically
   * distinct - unique values
   * sample
   * Union, intersection, subtract , cartesian
-  * collect  - take the result of all the RDDs adn suck them down to driver script
+  * collect  - take the result of all the RDDs and suck them down to driver script
   * count
   * countByValue
   * take
@@ -135,12 +135,34 @@ Example
     rdd = sc.parallelize([1,2,3,4])
     squaredrdd= rdd.map(lambda x:x**2)   -- > [1,4,9,16]
     
-Note:  To put the script on a cluster type spark-submit <insert-script>.py
+Note:  To put the script on a cluster type **spark-submit <insert-script>.py**
   
   
+### Spark SQL and 2.0
+
+Extend RDD to a dataframe object where rows can contain structured data. Dataframe contains row objects which can run sql queries as they have a schema(leading to effecient storage) and can read from or write to JSON, Hive, Parquet. They communicate with JDBC/ODBC,tableau.
+
+
+    from pyspark.sql import SQLContext, Row
+    hiveCxt= HiveContext(sc)
+    inputData = spark.read.json(dataFile)
+    inputData.createOrReplaceTempView("myStructuredStuff")
+    myResultDataFrame = hiveCxt.sql(""" SELECT foo FROM bar""")
+
+Instead of sql we can do things mroe programmatically too
  
-  
-         
+    myResultDataFrame.show()
+    myResultDataFrame.select("someFieldName")
+    myResultDataFrame.filter(myResultDataFrame("someFieldName")>200)
+    myResultDataFrame.groupBy(myResultDataFrame("someFieldName")).mean()
+    myResultDataFrame.rdd().map(mapperFunction)
+ 
+ 
+* Dataframe is a Dataset of row objects while Dataset is a general term that cn contaian any sort of info, not just rows
+* Spark 2.0 way is to use Dataset and we create a SparkSession object instead of SparkContext
+* SparkSession.builder.appName("some name").getOrCreate() 
+
+
      
 
 # Install VirtualBox
