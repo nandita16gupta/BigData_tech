@@ -62,7 +62,14 @@ To load data into HDFS from cli, use putty and SSH maria_dev@127.0.0.1 on port 2
   **hadoop fs** -copyFromLocal u.data ml-100k/u.data
   **hadoop fs** -rmdir ml-100k 
   
-## Pig
+## MapReduce
+ This is natively Java but streaming allows us to write mappers and reducers in python. Mappers transform the input lines into the required structure, usually a (key,value) pair. Shuffling and sorting happens automatically and then the reducers aggregate the keys and perform the fucntion required.
+ 
+ **from mrjobs.jobs import MRJob
+ from mrjobs.step import MRStep**
+ 
+ MRJob is an object for the class that you call run() on. Initialize it with a MRStep function which takes a list of mappers and reducers that are defined later in the class.
+ 
 
 
 
