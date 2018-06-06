@@ -86,9 +86,15 @@ These are relations with schema . To make it faster, use Tez which has a DAG tha
 * JOIN COGROUP GROUP CROSS CUBE
 * ORDER RANK LIMIT
 * UNION SPLIT
+* DESCRIBE EXPLAIN ILLUSTRATE
+* REGUSTER DEFINE IMPORT
+* AVG CONCAT COUNT MAX MIN SUM SIZE
+* PigStorage TextLoader JsonLoader AvroStorage ParquetStorage OrcStorage HbaseStorage
 
 
+## Spark
 
+Apache Spark is a very quickly emerging technology in the Hadoop Ecosystem. 
 
 # Install VirtualBox
 
