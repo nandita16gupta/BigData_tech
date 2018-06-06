@@ -79,54 +79,13 @@ So the big problem with mapreduce is just the development cycle time(it takes a 
 2) Script - Save pig sccript to a file and run it
 3) Ambari/Hue
 
-These are relations with schema  
+These are relations with schema . To make it faster, use Tez which has a DAG that analyzes the interrelationship between different steps and figure out the optimal path for executing things. List of Commands
 
-Mapper  
-
-
-    ratings = LOAD 'user/maria_dev/ml-100k/u.data' AS  (user_id:int, movie_id:int, rating:int, timestamp:int);
-     
-Use pigStorage if you need a different delimiter :  
-     
-    metadata = LOAD 'user/maria_dev/ml-100k/u.item' USING PigStorage('|') AS  (movie_id:int, movie_name:charArray, releaseDate:charArray, videoRelease:charArray, imdbLink:charArray);  
-Dump out the contents of the entire relation :   
-
-     DUMP metadata;  
-     
-Get it into some format you can sort  
-
-     nameLookup = FOREACH metadata GENERATE movie_id, movie_name, ToUnixTime(ToDate(releaseDate,'dd-MMM-yyyy')) AS releaseTime;  
- 
-Group by and Reduce :       
-     
-     ratingsByMovie = GROUP ratings by movie_id;  
-     DUMP ratingsByMovie; 
-     
-To compute the ratings:
-
-    avgRatings = FOREACH ratingsByMovie GENERATE group as movie_id, AVG(ratings.rating) as AvgRating;  
-    DUMP avgRatings;  
-    
-To get the schema
-
-    DESCRIBE ratings;
-    DESCRIBE ratingsByMovie;
-    DESCRIBE avgRatings;
-
-Filter :
-
-    fiveStarMovies = FILTER avgRatings BY avgRating>4;
-    
-Get the movie names: Not that when you do a join you get weird symbols like :: between the names of the columns
-
-     fiveStarsWithData = JOIN fiveStarMovies by movie_id, nameLookup by movie_id;  
-     DUMP fiveStarsWithData;  
-Order things by release date :      
- 
-    oldestFiveStar = ORDER fiveStarsWithData NY namelookup::releaseTime;  
-    DUMP oldestFiveStar;  
-
-
+* LOAD STORE DUMP
+* FILTER DISTINCT FOREACH/GENERATE MAPREDUCE STREAM SAMPLE
+* JOIN COGROUP GROUP CROSS CUBE
+* ORDER RANK LIMIT
+* UNION SPLIT
 
 
 
