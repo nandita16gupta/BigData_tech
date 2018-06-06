@@ -65,8 +65,8 @@ To load data into HDFS from cli, use putty and SSH maria_dev@127.0.0.1 on port 2
 ## MapReduce
  This is natively Java but streaming allows us to write mappers and reducers in python. Mappers transform the input lines into the required structure, usually a (key,value) pair. Shuffling and sorting happens automatically and then the reducers aggregate the keys and perform the fucntion required.
  
- **from mrjobs.jobs import MRJob  
- from mrjobs.step import MRStep**  
+   **from mrjobs.jobs import MRJob  
+   from mrjobs.step import MRStep**  
  
  MRJob is an object for the class that you call run() on. Initialize it with a MRStep function which takes a list of mappers and reducers that are defined later in the class.
  
@@ -81,14 +81,18 @@ So the big problem with mapreduce is just the development cycle time(it takes a 
 
 These are relations with schema  
 
-*  Mapper : 
-    ratings= LOAD 'user/maria_dev/ml-100k/u.data' AS  (user_id:int, movie_id:int, rating:int, timestamp:int);  
-*  Use pigStorage if you need a different delimiter :
-    metadata = LOAD 'user/maria_dev/ml-100k/u.item' USING PigStorage('|') AS  (movie_id:int, movie_name:charArray, releaseDate:charArray, videoRelease:charArray, imdbLink:charArray);      
-*  Dump out the contents of the entire relation :
-   DUMP metadata;  
-*  Get it into some format you can sort
-    nameLookup = FOREACH metadata GENERATE movie_id, movie_name, ToUnixTime(ToDate(releaseDate,'dd-MMM-yyyy')) AS releaseTime;  
+*  Mapper :   
+     ratings= LOAD 'user/maria_dev/ml-100k/u.data' AS  (user_id:int, movie_id:int, rating:int, timestamp:int);  
+*  Use pigStorage if you need a different delimiter :  
+     metadata = LOAD 'user/maria_dev/ml-100k/u.item' USING PigStorage('|') AS  (movie_id:int, movie_name:charArray, releaseDate:charArray, videoRelease:charArray, imdbLink:charArray);      
+*  Dump out the contents of the entire relation :  
+     DUMP metadata;  
+*  Get it into some format you can sort  
+     nameLookup = FOREACH metadata GENERATE movie_id, movie_name, ToUnixTime(ToDate(releaseDate,'dd-MMM-yyyy')) AS releaseTime; 
+ *  Group by :  
+      ratingsByMovie = GROUP ratings by movie_id;  
+      DUMP ratingsByMovie;  
+      
 
 
 
