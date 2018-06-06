@@ -55,6 +55,12 @@ Dealing with a single point of failure for name node:
      * Zookeper can keep track of which nodes are active
      * Goes to extreme measures to make sure only one name node is used at a time
 
+To load data into HDFS from cli, use putty and SSH maria_dev@127.0.0.1 on port 2222
+
+  **hadoop fs** -ls  
+  **hadoop fs** -mkdir ml-100k  
+  **hadoop fs** -copyFromLocal u.data ml-100k/u.data
+  **hadoop fs** -rmdir ml-100k 
 
 
 # Install VirtualBox
@@ -73,6 +79,9 @@ uname: maria_dev
 pwd: maria_dev  
 
 This takes you to the Dashboard
+
+
+Directly get to the Ambari page on  http://127.0.0.1:8080/  
 
 ## Dataset 1
 
