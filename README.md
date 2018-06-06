@@ -161,10 +161,23 @@ Instead of sql we can do things mroe programmatically too
 * Dataframe is a Dataset of row objects while Dataset is a general term that cn contaian any sort of info, not just rows
 * Spark 2.0 way is to use Dataset and we create a SparkSession object instead of SparkContext
 * SparkSession.builder.appName("some name").getOrCreate() 
-* Run "export SPARK_MAJOR_VERSION=2" in the cli
+* Run "export SPARK_MAJOR_VERSION=2" in the cli else you won't be able to import the session
 
 
+## Hive
 
+Distributing SQL queries across hadoop. This works over Mapreduce and Tez.
+* Easy OLAP Queries (Online analytics processing), Highly optimized and extensible
+* HiveQL works with views which are more of a logical construct and not like a materialized view and allows you to specify how to structure or partition data
+
+
+Cons:
+ 
+* It takes SQL commands and converts them to Mapreduce commans which take sme time, High latency in not appropriate for OLTP
+* SQL is limited. Pig and Spark can do a lot more complex operations
+* No record level updates, inserts or deletes
+* No transactions
+* Stores data de-normalized(flat text file and not a relational db)
      
 
 # Install VirtualBox
