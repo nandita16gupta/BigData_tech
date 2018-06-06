@@ -166,9 +166,12 @@ Instead of sql we can do things mroe programmatically too
 
 ## Hive
 
-Distributing SQL queries across hadoop. This works over Mapreduce and Tez.
+Distributing SQL queries across hadoop. This works over Mapreduce and Tez. Bassic concept of Hive is **Schema on read**. It takes unstructured data and applies a schema to it as it is being read. So the data might still be tab limited text file but hive maintains a **metastore** which tells us exactly how to interpret the text files. HCatalog can expose that schema to other services
+
+
 * Easy OLAP Queries (Online analytics processing), Highly optimized and extensible
 * HiveQL works with views which are more of a logical construct and not like a materialized view and allows you to specify how to structure or partition data
+* CREATE VIEW IF NOT EXISTS - This will only create if the view wasn't previously created
 
 
 Cons:
@@ -178,7 +181,12 @@ Cons:
 * No record level updates, inserts or deletes
 * No transactions
 * Stores data de-normalized(flat text file and not a relational db)
-     
+
+
+
+
+
+
 
 # Install VirtualBox
 
