@@ -134,6 +134,8 @@ Example
     
     rdd = sc.parallelize([1,2,3,4])
     squaredrdd= rdd.map(lambda x:x**2)   -- > [1,4,9,16]
+    
+Note:  To put the script on a cluster type spark-submit <insert-script>.py
   
   
  
