@@ -116,6 +116,11 @@ To get the schema
 Filter :
 
     **fiveStarMovies** = FILTER avgRatings BY avgRating>4;
+    
+Get the movie names:
+
+     fiveStarsWithData = JOIN fiveStarMovies by movie_id, nameLookup by movie_id;  
+     DUMP fiveStarsWithData;  
 
 
 
