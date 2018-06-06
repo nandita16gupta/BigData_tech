@@ -61,6 +61,10 @@ To load data into HDFS from cli, use putty and SSH maria_dev@127.0.0.1 on port 2
   **hadoop fs** -mkdir ml-100k  
   **hadoop fs** -copyFromLocal u.data ml-100k/u.data
   **hadoop fs** -rmdir ml-100k 
+  
+## Pig
+
+
 
 
 # Install VirtualBox
