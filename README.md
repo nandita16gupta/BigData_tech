@@ -42,7 +42,20 @@ Building blocks
 
 ## HDFS
 
-Optimized for handling really large files by breaking them into blocks and store copies on multiple clusters.
+Optimized for handling really large files by breaking them into blocks and store copies on multiple clusters. There is a single name node that keeps track of where those blocks live and also maintains an edit log. Individual data nodes are what the client will be talking to after tehy are redicrected by the name node and these data nodes talk to each other to maintain copies and replications of those blocks.
+
+![alt text](https://github.com/snknitin/BigData_tech/blob/master/static/hadoopreadwrite.png)
+
+Dealing with a single point of failure for name node:
+1) **Back up the metadata constantly to localdisk and NFS**
+2) **Maintain a merged copy of edit log that you can restore from in a secondary name node**
+3) **HDFS Federation- a hierarchy where each name node manages a specific namespace volume**
+4) **HDFS High Availability:**
+     * Hot standby name node using shared edit log
+     * Zookeper can keep track of which nodes are active
+     * Goes to extreme measures to make sure only one name node is used at a time
+
+
 
 # Install VirtualBox
 
