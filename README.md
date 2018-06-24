@@ -288,11 +288,14 @@ Drill is just the system that sits on top of your various technologies for stori
 * It is part of client and server
 
 
-
-
 ## Presto
-## Apache Zeppelin
-## 
+
+Lot like drill conceptually. Connects to many big data dbs and sta stores at once and can query across them and is optimized for OLAP queries(analytical queries or data warehousing). Developed and maintained by Facebook. Also used by Airbnb and dropbox.
+
+* Exposes JDBC driver, CLI, Tableau
+* It has a Cassandra connector which is not in drill
+
+
 
 # Install VirtualBox
 
@@ -330,4 +333,4 @@ You can use the cvs importer even though it is tab separated  by selecting the o
 After giving it column names, uploading it will create a view within Hive that is sitting on our Hadoop instance  
 Now upload the u.item ffile limited by | symbol
 
-- Use SQL queriies on these databases and visualize them with the inbuilt tool
+- Use SQL queries on these databases and visualize them with the inbuilt tool
