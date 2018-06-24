@@ -206,7 +206,19 @@ High transaction queries are probably simple enough once denormalized so we need
 
 ## HBase
 
-It is a non relational scalable db built on top of hdfs. It doesn't have a query language but 
+It is a non relational scalable db built on top of hdfs. It doesn't have a query language but it has apis that can very quickly answer the question "what are the values for this key?" or "store this value for this key". It is an implementation of google's BigTable. You can do **CRUD** operations on Hbase. That's it. As your data grows it can automatically scale, shard and distribute it at run time. It works with a master node that keeps track of how the region servers are split up and Zookeeper keeps track of the master incase it breaksdown and handles that bottleneck. the data model is as follow
+
+* Fast access to any given ROW each identified by a unique key value and has a small number of column families(may contain arbitrary COLUMNS)
+* Each cell hass many versions with given timestamps
+* Sparse data is fine as missing columns in a row consume no storage
+* Hbase can be accessed through
+ * Hbase Shell
+ * Java API with wrappers for scala and python
+ * REST services
+ * Thrift service
+ * Avro service
+ * Spark, Hive,Pig
+
 
 
 
