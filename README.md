@@ -295,6 +295,50 @@ Lot like drill conceptually. Connects to many big data dbs and sta stores at onc
 * Exposes JDBC driver, CLI, Tableau
 * It has a Cassandra connector which is not in drill
 
+# Streaming
+
+How to get data from source to cluster and what to do with it when it gets there
+
+## Kafka
+
+
+It is a general purpose **publish/subscribe messaging system** and is not jusst for hadoop .
+* Stores all incoming messages from publishers for soem period of time and publishes them to a stream of data called topic
+* Consumers subscribe to one or more topics and receive the data
+* Kafka cluster is in the center, producers generate data and push it into the cluster and consumer apps are also linked and read this data in real time. Connectors are plug in modules that connect a db to kafka cluster. Stream processors transform data as they come in.
+* Kafka itself may be distributed among many processes on servers and consumers can also be distributed. 
+
+
+## Flume (Apache)
+
+Built in sinks for hdfs and hbase. Originally madeto handle log aggregation.
+* web server > Flume agent - source,channel,sink > Hbase
+* You can have a layer of flume agents to reduce traffic or amoutn of data being written to hdfs
+* Flume is a buffer between the data and the cluster
+
+
+## Spark Streaming
+ 
+Data streams from flume or kafka are picked up by the receivers in the spark cluster and is discretized into chunks(individual RDDs). It's not exactly real time but it is one second chunks. Operations are performed on a **Dstream(Discretized stream)** which is responsible for generating RDDs for eeach time step and can produce an output at each time step too. We can do map, flatmap, fliter,reducebykey etc on Dstreams. You ca also maintain long-lived state on dstream using **windowing**(sliding window of time to make computations). 
+
+* Intervals
+  *  Batch Interval - How often the data is captured in the dstream
+  *  Slide Interval - How often the windowed transformation is computed
+  *  Window Interval - How far back in time the window transformation goes.
+
+* Dataframe that never ends - DataSets
+
+## Apache Storm
+
+Storm works on individual events and not micro batchers like spark streaming. The stream is a tuple of data and it originiates from a **Spout** which si a source like kafka or twitter etc and is processed by **Bolts**. These two are connected together in a graph called **topology**.
+* Nimbus node is a single point of failure.
+* Everything goes through zookeeper which run the supersvisors that in turn run the workers.
+* Storm core - lower lever api. "At least once " semantics
+* Trident - high level api. "Exactly once" semantics
+* Usually done with java although bolts may be directed through scripts in other languages
+* Core storm offers **tumbling windows** in addtion to sliding windows
+* Kafka + Storm is a common combination
+
 
 
 # Install VirtualBox
