@@ -191,6 +191,22 @@ Imports and Exports data from MySQL to HDFS and also does incremental imports us
     sqoop export --connect jdbc:mysql://localhost/movielens -m 1 --driver com.mysql.jdbc.Driver --tabe exported_movies --export-dir /apps/hive/warehouse/movies --input-fields-terminated-by '\0001'
     
 
+## NoSQL
+
+To get interactive timescale results across a massive dataset, we use NoSQL. Non relational databases. These scale horizontally forever.
+
+How to make RDBMS to scale to larger data
+* Denormalize the tables and pre-materialize the views
+* Caching layers on top of the database like Memcache to prevent traffic
+* Master/Slave setups
+* Sharding db into range partitions
+* Remove stored procedures
+
+High transaction queries are probably simple enough once denormalized so we need just a simple get/put api with key value pairs. When you work at a giant scale it is better to use a non-relational db for fast and scalable solutions.  
+
+## HBase
+
+It is a non relational scalable db built on top of hdfs. It doesn't have a query language but 
 
 
 
