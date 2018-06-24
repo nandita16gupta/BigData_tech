@@ -232,23 +232,28 @@ No single point of failure. NoSQL db with a twist. it does have a query language
 
 It is a document-based data model. It trades off availability as it uses a master node. You don't need structured data. You can use JSON files as well. You can have different fields in different documents. But you need some unique index if you want to shard. Instead of tables and rows we have -  
 
-* Databases
-* Collections
-* Documents
+* Databases,Collections, Documents
 
 * Replica sets
- * Single master architecture
- * Secondary backup nodes of the database instance. Operation log is long enough to give time for the primary to recover 
- * Even number of servers doesn't wrk since we need majority ot have an agreement on who iss primary. You cna have ariter nodes whose only job is to vote on who should be primary in teh event of a failure
- * Replica sets only address durability and not ability to scale.
- * You can have a delayed secondary with a time delay between replication as insurance. Restoration can be done relatively quickly fom it
- 
+   * Single master architecture
+   * Secondary backup nodes of the database instance. Operation log is long enough to give time for the primary to recover 
+   * Even number of servers doesn't wrk since we need majority ot have an agreement on who iss primary. You cna have ariter nodes whose only job is to vote on who should be primary in teh event of a failure
+   * Replica sets only address durability and not ability to scale.
+   * You can have a delayed secondary with a time delay between replication as insurance. Restoration can be done relatively quickly fom it
+
 * **Sharding** - we actually have multiple replica sets, where each replica set is responsible for some range of values on some indexed value in my database.So in order to get sharding to work, it requires that you set up an index on some unique value on your collection, and that index is used to actually balance the load of information among multiple replica sets, and then on each application server, whatever you're using to talk to MongoDB, you'll run a process called "mongo-S, and "mongos" talks to exactly three configuration servers that you have running somewhere that knows about how things are partitioned and then uses that to figure out which replica set do I talk to to get the information that I want. Ranges can get rebalanced over time. 
 
- * Auto sharding fails sometimes causing split storms where it cannot spplit things quickly enough and allso if mongos processes get restarted too often
- * You must have 3 config servers
-   * This is on top of the single master design of replica sets and if any of them goes down, the DB is down
- * MongoDBB's loose document model can be at odds with effective sharding
+  * Auto sharding fails sometimes causing split storms where it cannot spplit things quickly enough and allso if mongos processes get restarted too often
+  * You must have 3 config servers
+    * This is on top of the single master design of replica sets and if any of them goes down, the DB is down
+  * MongoDBB's loose document model can be at odds with effective sharding
+
+**Pros :**  
+* Flexible document model
+* Shell is a JavaScript interpreter
+* Supports many indices but only one can be used for sharding
+* Built-in aggregation capabilities for mapreduce,gridFS. Some applications may not nneed Hadoop at all.
+* SQL connector is available but can't do joins or deal with normalized data
 
 
 
