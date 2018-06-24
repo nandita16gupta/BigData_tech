@@ -220,7 +220,35 @@ It is a non relational scalable db built on top of hdfs. It doesn't have a query
  * Spark, Hive,Pig
 
 
+## Cassandra
+No single point of failure. NoSQL db with a twist. it does have a query language called CQL. CAP theorom (Consistency,availability,partition-tolerance) states you can have only 2 out of 3. Cassandra favors availability over consistency(eventual consistency). It is actually tunable consisteny. 
+* Unlike hbase, it doesn't have amaster node, rather a ring like architecture and uses gossip protocol, so that every node is communicating every second with each other.
+* CQL can't do joins since we need denormalized tables and all queries must be on primary key
+* Keyspaces (Tables)
+* Write spark output into Cassandra
+ 
 
+## MongoDB
+
+It is a document-based data model. It trades off availability as it uses a master node. You don't need structured data. You can use JSON files as well. You can have different fields in different documents. But you need some unique index if you want to shard. Instead of tables and rows we have -  
+
+* Databases
+* Collections
+* Documents
+
+* Replica sets
+ * Single master architecture
+ * Secondary backup nodes of the database instance. Operation log is long enough to give time for the primary to recover 
+ * Even number of servers doesn't wrk since we need majority ot have an agreement on who iss primary. You cna have ariter nodes whose only job is to vote on who should be primary in teh event of a failure
+ * Replica sets only address durability and not ability to scale.
+ * You can have a delayed secondary with a time delay between replication as insurance. Restoration can be done relatively quickly fom it
+ 
+* **Sharding** - we actually have multiple replica sets, where each replica set is responsible for some range of values on some indexed value in my database.So in order to get sharding to work, it requires that you set up an index on some unique value on your collection, and that index is used to actually balance the load of information among multiple replica sets, and then on each application server, whatever you're using to talk to MongoDB, you'll run a process called "mongo-S, and "mongos" talks to exactly three configuration servers that you have running somewhere that knows about how things are partitioned and then uses that to figure out which replica set do I talk to to get the information that I want. Ranges can get rebalanced over time. 
+
+ * Auto sharding fails sometimes causing split storms where it cannot spplit things quickly enough and allso if mongos processes get restarted too often
+ * You must have 3 config servers
+   * This is on top of the single master design of replica sets and if any of them goes down, the DB is down
+ * MongoDBB's loose document model can be at odds with effective sharding
 
 
 
