@@ -278,6 +278,18 @@ Drill is just the system that sits on top of your various technologies for stori
 
 
 ## Apache Phoenix
+
+* This is a non-relational DB that only works with hbase and nothing else. Originally developed by Salesforce
+* Fast, Low-latency OLTP support
+* Exposes JDBC connector for HBase and has APIs for java
+* Supports secondary indices and user-defined functions
+* Integrates with MapReduce, Spark,Flume,Hive and Pig and creates jars
+* It is really fast and you won't paay a performance cost from habng this extra layer over hbase and it optimizes complex queries though it doesn't support all of SQL
+* It is part of client and server
+
+
+
+
 ## Presto
 ## Apache Zeppelin
 ## 
