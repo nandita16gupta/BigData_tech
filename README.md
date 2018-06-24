@@ -182,6 +182,14 @@ Cons:
 * No transactions
 * Stores data de-normalized(flat text file and not a relational db)
 
+## Sqoop 
+
+Imports and Exports data from MySQL to HDFS and also does incremental imports using parameters like **--check-column** and **--last-value** to import and only get new data since the last time you added t keep hadoop and relational db in sync. For export create a table ahead of time that matches the schema since sqoop doesn't do it automatically
+
+    sqoop import --connect jdbc:mysql://localhost/movielens --driver com.mysql.jdbc.Driver --tabe movies --hive-import
+    
+    sqoop export --connect jdbc:mysql://localhost/movielens -m 1 --driver com.mysql.jdbc.Driver --tabe exported_movies --export-dir /apps/hive/warehouse/movies --input-fields-terminated-by '\0001'
+    
 
 
 
