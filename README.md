@@ -268,6 +268,20 @@ It is a document-based data model. It trades off availability as it uses a maste
 ![alt text](https://github.com/snknitin/BigData_tech/blob/master/static/CAP.PNG)
 
 
+# Query Engines
+
+![alt text](https://github.com/snknitin/BigData_tech/blob/master/static/qe.PNG)
+
+## Apache Drill
+
+Drill is just the system that sits on top of your various technologies for storing data, and it basically lets you execute actual SQL queries on top of data that might not even have a schema at all. Based on Google's Dremel. It is an sql query engine for variety of non relational dbs and data files. Can replace Hive. Exposes an interface to other tools that makes it look just like a relational database. This is called ODBC or JDBC, and using that driver, you can connect external tools like Tableau or anything that expects to connect to a relational database and use it just like it's a relational database. SQL without a schema- Internal data representation is JSON
+
+
+## Apache Phoenix
+## Presto
+## Apache Zeppelin
+## 
+
 # Install VirtualBox
 
 Download from https://www.virtualbox.org/wiki/Downloads
