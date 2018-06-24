@@ -256,6 +256,17 @@ It is a document-based data model. It trades off availability as it uses a maste
 * SQL connector is available but can't do joins or deal with normalized data
 
 
+# Choosing a Database
+
+* Integration considerations
+* Scaling requirements
+* Transaction rates
+* Support considerations
+* Budget 
+* CAP theorom
+
+![alt text](https://github.com/snknitin/BigData_tech/blob/master/static/CAP.PNG)
+
 
 # Install VirtualBox
 
