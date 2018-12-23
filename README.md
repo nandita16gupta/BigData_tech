@@ -12,12 +12,9 @@ Building blocks
 
 1) **HDFS** - Hadoop distributed file system  - Distributed data storage
 2) **YARN** - Yet another resournce negotiator - Managed distributed processing
-3) **MapReduce** - Mappers transform data in prallel across cluster and reducers aggregate it
-
+3) **MapReduce** - Mappers transform data in parallel across clusters and reducers aggregate it
 4) **Pig** - High level programming api that allows you to write sql like scripts to chain queries and get complex answers to run on mapreduce instead of python or java code. 
 5) **Hive** - Looks like a SQL database  
-
-
 6) **Ambari** - Lets you visualize and sits on top of all these
 
 
