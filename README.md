@@ -39,7 +39,7 @@ Building blocks
 
 ## HDFS
 
-Optimized for handling really large files by breaking them into blocks and store copies on multiple clusters. There is a single name node that keeps track of where those blocks live and also maintains an edit log. Individual data nodes are what the client will be talking to after tehy are redicrected by the name node and these data nodes talk to each other to maintain copies and replications of those blocks.
+Optimized for handling really large files by breaking them into blocks and store copies on multiple clusters. There is a single name node that keeps track of where those blocks live and also maintains an edit log. Individual data nodes are what the client will be talking to after they are redirected by the name node and these data nodes talk to each other to maintain copies and replications of those blocks.
 
 ![alt text](https://github.com/snknitin/BigData_tech/blob/master/static/hadoopreadwrite.png)
 
