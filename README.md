@@ -92,7 +92,7 @@ These are relations with schema . To make it faster, use Tez which has a DAG tha
 ## Spark
 
 Apache Spark is a very quickly emerging technology in the Hadoop Ecosystem. what sets it apart from other technologies like Pig for example is that it has a rich ecosystem on top of Spark that lets you do all sorts of complicated things like machine learning, 
-data mining, graph analysis and streaming data. So it's a very powerful framework and a very fast one too and it's scalable. Spark doesn't have to run on Hadoop.. It has it own ccluster manager built in or use Mesos. Unlike a disk based solution where it is hitting HDFS all the time, spark is a memory based solution as each executor process has a task and a cache. DAG engine(Directed Acyclic Graph) optimizes workflows.
+data mining, graph analysis and streaming data. So it's a very powerful framework and a very fast one too and it's scalable. Spark doesn't have to run on Hadoop. It has it own ccluster manager built in or use Mesos. Unlike a disk based solution where it is hitting HDFS all the time, spark is a memory based solution as each executor process has a task and a cache. DAG engine(Directed Acyclic Graph) optimizes workflows.
 
 * Can code in Python, Java, Scala. Spark itself is written in Scala(compiles to Java Bytecoode and gives fast performance)
 * Built around one main concept : **Resilient Distributed Dataset(RDD)**
@@ -111,8 +111,8 @@ To make RDD, the driver program is going to create a **SparkContext** (basically
 * or create RDD from any databse connected to JDBC,Cassandra, HBase, Elastisearch, Data files like JSON,CSV etc 
 * Functions on RDD:
   * map - Apply a function to every input row and create a new RDD with 1-1 relation
-  * flatmap - This is not restrincted to 1-1 relation
-  * filter - Take pout some rows
+  * flatmap - This is not restricted to 1-1 relation
+  * filter - Take out some rows
   * distinct - unique values
   * sample
   * Union, intersection, subtract , cartesian
