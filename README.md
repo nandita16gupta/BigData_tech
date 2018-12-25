@@ -76,7 +76,7 @@ So the big problem with mapreduce is just the development cycle time(it takes a 
 2) Script - Save pig sccript to a file and run it
 3) Ambari/Hue
 
-These are relations with schema . To make it faster, use Tez which has a DAG that analyzes the interrelationship between different steps and figure out the optimal path for executing things. List of Commands
+These are relations with schema . To make it faster, use Tez which has a DAG that analyzes the inter-relationship between different steps and figure out the optimal path for executing things. List of Commands
 
 * LOAD STORE DUMP
 * FILTER DISTINCT FOREACH/GENERATE MAPREDUCE STREAM SAMPLE
@@ -91,7 +91,7 @@ These are relations with schema . To make it faster, use Tez which has a DAG tha
 
 ## Spark
 
-Apache Spark is a very quickly emerging technology in the Hadoop Ecosystem. what sets it apart from other technologies like Pig for example is that it has a rich ecosystem on top of Spark that lets you do all sorts of complicated things like machine learning, 
+Apache Spark is a very quickly emerging technology in the Hadoop Ecosystem. What sets it apart from other technologies like Pig for example is that it has a rich ecosystem on top of Spark that lets you do all sorts of complicated things like machine learning, 
 data mining, graph analysis and streaming data. So it's a very powerful framework and a very fast one too and it's scalable. Spark doesn't have to run on Hadoop. It has it own ccluster manager built in or use Mesos. Unlike a disk based solution where it is hitting HDFS all the time, spark is a memory based solution as each executor process has a task and a cache. DAG engine(Directed Acyclic Graph) optimizes workflows.
 
 * Can code in Python, Java, Scala. Spark itself is written in Scala(compiles to Java Bytecoode and gives fast performance)
@@ -249,7 +249,7 @@ It is a document-based data model. It trades off availability as it uses a maste
 * Flexible document model
 * Shell is a JavaScript interpreter
 * Supports many indices but only one can be used for sharding
-* Built-in aggregation capabilities for mapreduce,gridFS. Some applications may not nneed Hadoop at all.
+* Built-in aggregation capabilities for mapreduce,gridFS. Some applications may not need Hadoop at all.
 * SQL connector is available but can't do joins or deal with normalized data
 
 
@@ -299,7 +299,7 @@ How to get data from source to cluster and what to do with it when it gets there
 ## Kafka
 
 
-It is a general purpose **publish/subscribe messaging system** and is not jusst for hadoop .
+It is a general purpose **publish/subscribe messaging system** and is not just for hadoop .
 * Stores all incoming messages from publishers for soem period of time and publishes them to a stream of data called topic
 * Consumers subscribe to one or more topics and receive the data
 * Kafka cluster is in the center, producers generate data and push it into the cluster and consumer apps are also linked and read this data in real time. Connectors are plug in modules that connect a db to kafka cluster. Stream processors transform data as they come in.
@@ -308,7 +308,7 @@ It is a general purpose **publish/subscribe messaging system** and is not jusst 
 
 ## Flume (Apache)
 
-Built in sinks for hdfs and hbase. Originally madeto handle log aggregation.
+Built in sinks for hdfs and hbase. Originally made to handle log aggregation.
 * web server > Flume agent - source,channel,sink > Hbase
 * You can have a layer of flume agents to reduce traffic or amoutn of data being written to hdfs
 * Flume is a buffer between the data and the cluster
